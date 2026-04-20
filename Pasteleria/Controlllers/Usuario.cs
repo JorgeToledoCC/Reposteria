@@ -2,6 +2,7 @@ using System.Collections;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pasteleria.DTO.Usuario.AgregarUsuario;
 using Pasteleria.Entidades;
 using Pasteleria.Infraestructura;
 
@@ -35,19 +36,29 @@ namespace Pasteleria.Controlllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Usuario>> CrearCliet([FromBody] string nombre, string email, string password,string rol)
+        public async Task<ActionResult<AgregarUsuarioinput>> CrearCliet([FromBody] AgregarUsuarioinput usuario)
         {
-            Usuario usuario = new Usuario
+            var entrada = new Usuario
             {
-                Nombre=nombre,
-                Email=email,
-                Password=password,
-                Rol=rol
+                Id = Guid.NewGuid(),
+                Nombre = usuario.Nombre,
+                Email = usuario.Email,
+                Password = usuario.Password,
+                Rol = "Indefinido"
+            };
+            entrada.Rol = "Cliente";
+            _contexto.Usuarios.Add(entrada);
+            await _contexto.SaveChangesAsync();
+            var salida = new AgregarUsuarioOutput
+            {
+                Id = entrada.Id,
+                Nombre = entrada.Nombre,
+                Email = entrada.Email,
+                Password = entrada.Password,
+                Rol  = entrada.Rol
             };
 
-            _contexto.Usuarios.Add(usuario);
-            await _contexto.SaveChangesAsync();
-            return Ok(usuario);
+            return Ok(salida);
         }
         [HttpDelete]
         public async Task<ActionResult<Usuario>> DeleteUser(Guid id)
