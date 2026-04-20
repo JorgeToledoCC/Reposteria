@@ -35,8 +35,16 @@ namespace Pasteleria.Controlllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Usuario>> CrearCliet([FromBody] Usuario usuario)
+        public async Task<ActionResult<Usuario>> CrearCliet([FromBody] string nombre, string email, string password,string rol)
         {
+            Usuario usuario = new Usuario
+            {
+                Nombre=nombre,
+                Email=email,
+                Password=password,
+                Rol=rol
+            };
+
             _contexto.Usuarios.Add(usuario);
             await _contexto.SaveChangesAsync();
             return Ok(usuario);
