@@ -36,7 +36,7 @@ namespace Pasteleria.Controlllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<AgregarUsuarioinput>> CrearCliet([FromBody] AgregarUsuarioinput usuario)
+        public async Task<ActionResult<AgregarUsuarioOutput>> CrearCliet([FromBody] AgregarUsuarioinput usuario)
         {
             var entrada = new Usuario
             {
@@ -57,8 +57,8 @@ namespace Pasteleria.Controlllers
                 Password = entrada.Password,
                 Rol  = entrada.Rol
             };
-
-            return Ok(salida);
+            return CreatedAtAction( nameof(Getuserid),new { id = entrada.Id },salida); //lo busca por el id, verifica si esta creado y lo devuelve, y si no te jodes wei equisdedxddxdxd
+            
         }
         [HttpDelete]
         public async Task<ActionResult<Usuario>> DeleteUser(Guid id)
