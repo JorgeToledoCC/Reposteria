@@ -2,6 +2,7 @@ using System.Collections;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pasteleria.DTO.Pedido;
 using Pasteleria.Entidades;
 using Pasteleria.Infraestructura;
 
@@ -39,9 +40,20 @@ namespace Pasteleria.Controlllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Pedido>> CrearPedido([FromBody] Pedido pedido)
+        public async Task<ActionResult<Pedido>> CrearPedido([FromBody] PedidoInput pedido)
         {
-            _contexto.Pedidos.Add(pedido);
+            List<ProductosInput> productos = pedido.Productos;
+            foreach(ProductosInput p in productos)
+            {   
+              var product =   _contexto.Productos.Find(p.Nombre);
+                if (product !=null)
+                {
+              product.Stock -= p.Cantidad;
+                    
+                }
+
+            }
+           
             await _contexto.SaveChangesAsync();
             return Ok(pedido);
         }

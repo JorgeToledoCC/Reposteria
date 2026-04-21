@@ -16,6 +16,7 @@ namespace Pasteleria.Entidades
 
         
         public virtual IEnumerable<Pedido> Pedidos { get; set; } = new List<Pedido>();
+       
     }
 
     
