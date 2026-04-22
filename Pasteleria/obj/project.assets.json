@@ -4516,11 +4516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\01.Estudiantes\\Downloads\\Pastelhoy\\Reposteria\\Pasteleria\\Pasteleria.csproj",
+      "projectUniqueName": "E:\\01.Estudiantes\\Downloads\\phoy\\Reposteria\\Pasteleria\\Pasteleria.csproj",
       "projectName": "Pasteleria",
-      "projectPath": "E:\\01.Estudiantes\\Downloads\\Pastelhoy\\Reposteria\\Pasteleria\\Pasteleria.csproj",
+      "projectPath": "E:\\01.Estudiantes\\Downloads\\phoy\\Reposteria\\Pasteleria\\Pasteleria.csproj",
       "packagesPath": "C:\\Users\\cisco\\.nuget\\packages\\",
-      "outputPath": "E:\\01.Estudiantes\\Downloads\\Pastelhoy\\Reposteria\\Pasteleria\\obj\\",
+      "outputPath": "E:\\01.Estudiantes\\Downloads\\phoy\\Reposteria\\Pasteleria\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
