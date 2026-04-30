@@ -1,0 +1,6 @@
+@ApiReposteria_HostAddress = http://localhost:5244
+
+GET {{ApiReposteria_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
